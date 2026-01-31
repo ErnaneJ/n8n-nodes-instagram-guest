@@ -1,5 +1,5 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @n8n/community-nodes/no-deprecated-workflow-functions */
+/* eslint-disable @typescript-eslint/no-explicit-any */ 
+/* eslint-disable @n8n/community-nodes/no-deprecated-workflow-functions */ 
 
 import {
 	IExecuteFunctions,
@@ -48,7 +48,7 @@ export class InstagramGuest implements INodeType {
 		// Standard User-Agent to mimic a real browser
 		const userAgent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36';
 
-		// Internal Instagram GraphQL Document ID
+		// Internal Instagram GraphQL Document ID (2026-01-31)
 		const GRAPHQL_DOC_ID = '9510064595728286';
 
 		for (let i = 0; i < items.length; i++) {
@@ -56,14 +56,14 @@ export class InstagramGuest implements INodeType {
 				const inputStr = this.getNodeParameter('postUrlOrShortcode', i) as string;
 				let shortcode = inputStr;
 
-				// Logic: Extract shortcode if a full URL is provided
+				// Extract shortcode if a full URL is provided
 				const urlMatch = inputStr.match(/(?:p|reel|tv|reels)\/([A-Za-z0-9_-]+)/);
 				if (urlMatch && urlMatch[1]) {
 					shortcode = urlMatch[1];
 				}
 
 				// Capture Cookies (Handshake)
-				const optionsStep1: any = { 
+				const optionsStep1: any = { // ignore
 					method: 'GET',
 					uri: 'https://www.instagram.com/',
 					headers: { 'User-Agent': userAgent },
@@ -71,7 +71,6 @@ export class InstagramGuest implements INodeType {
 					json: true,
 				};
 
-				// Linter ignorado aqui via header
 				const response1 = await this.helpers.request(optionsStep1);
 
 				// Extract CSRF Token
@@ -95,7 +94,7 @@ export class InstagramGuest implements INodeType {
 					hoisted_reply_id: null,
 				});
 
-				const optionsStep2: any = {
+				const optionsStep2: any = { // ignore
 					method: 'POST',
 					uri: 'https://www.instagram.com/graphql/query',
 					headers: {
