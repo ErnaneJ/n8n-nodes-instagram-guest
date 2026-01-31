@@ -1,0 +1,52 @@
+{
+  "name": "n8n-nodes-instagram-guest",
+  "version": "1.0.0",
+  "description": "Unofficial n8n node to retrieve Instagram media and metadata using the Guest/GraphQL method.",
+  "license": "MIT",
+  "homepage": "",
+  "keywords": [
+    "n8n-community-node-package",
+    "instagram",
+    "guest",
+    "scraper",
+    "social media"
+  ],
+  "author": {
+    "name": "Ernane Ferreira",
+    "email": "ernane.junior25@gmail.com",
+    "url": "https://ernane.dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ernanej/n8n-nodes-instagram-guest.git"
+  },
+  "scripts": {
+    "build": "n8n-node build",
+    "build:watch": "tsc --watch",
+    "dev": "n8n-node dev",
+    "lint": "n8n-node lint",
+    "lint:fix": "n8n-node lint --fix",
+    "release": "n8n-node release",
+    "prepublishOnly": "n8n-node prerelease"
+  },
+  "files": [
+    "dist"
+  ],
+  "n8n": {
+    "n8nNodesApiVersion": 1,
+    "nodes": [
+      "dist/nodes/InstagramGuest/InstagramGuest.node.js"
+    ]
+  },
+  "devDependencies": {
+    "@n8n/node-cli": "*",
+    "@types/request": "^2.48.13",
+    "eslint": "9.32.0",
+    "prettier": "3.6.2",
+    "release-it": "^19.0.4",
+    "typescript": "5.9.2"
+  },
+  "peerDependencies": {
+    "n8n-workflow": "*"
+  }
+}
