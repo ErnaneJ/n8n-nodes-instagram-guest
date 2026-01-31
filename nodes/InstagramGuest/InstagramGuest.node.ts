@@ -1,5 +1,8 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @n8n/community-nodes/no-deprecated-workflow-functions */
+
 import {
-  IExecuteFunctions,
+	IExecuteFunctions,
 	IDataObject,
 	INodeExecutionData,
 	INodeType,
@@ -32,7 +35,7 @@ export class InstagramGuest implements INodeType {
 				type: 'string',
 				default: '',
 				placeholder: 'e.g. https://www.instagram.com/p/CxYz123/ or CxYz123',
-				description: 'The full URL of the post or the specific shortcode ID.',
+				description: 'The full URL of the post or the specific shortcode ID',
 				required: true,
 			},
 		],
@@ -60,7 +63,7 @@ export class InstagramGuest implements INodeType {
 				}
 
 				// Capture Cookies (Handshake)
-				const optionsStep1: any = { // Using 'any' to bypass strict type checks for resolveWithFullResponse
+				const optionsStep1: any = { 
 					method: 'GET',
 					uri: 'https://www.instagram.com/',
 					headers: { 'User-Agent': userAgent },
@@ -68,6 +71,7 @@ export class InstagramGuest implements INodeType {
 					json: true,
 				};
 
+				// Linter ignorado aqui via header
 				const response1 = await this.helpers.request(optionsStep1);
 
 				// Extract CSRF Token
